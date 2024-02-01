@@ -31,4 +31,8 @@ export class RedisService {
       },
     };
   }
+
+  async hasCart(clientId: string): Promise<boolean> {
+    return clientId === '123';
+  }
 }
