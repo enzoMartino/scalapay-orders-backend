@@ -1,20 +1,19 @@
-import { Test, TestingModule } from '@nestjs/testing';
+import { PaymentMethodsEnum } from '../../../../common/enums/payment-methods.enum';
 import { PaymentMethodStrategyFactory } from './payment-method-strategy.factory';
+import { mock } from 'jest-mock-extended';
+import { ScalapayStrategy } from '../../strategies/scalapay.strategy';
 
 describe('PaymentMethodStrategyFactoryService', () => {
-  let service: PaymentMethodStrategyFactory;
+  const scalapayStrategy = mock<ScalapayStrategy>();
+  const service = new PaymentMethodStrategyFactory(scalapayStrategy);
 
-  beforeEach(async () => {
-    const module: TestingModule = await Test.createTestingModule({
-      providers: [PaymentMethodStrategyFactory],
-    }).compile();
+  describe('create', () => {
+    describe(`when paymentMethod is ${PaymentMethodsEnum.scalapay}`, () => {
+      it('should return correct strategy', () => {
+        const result = service.create(PaymentMethodsEnum.scalapay);
 
-    service = module.get<PaymentMethodStrategyFactory>(
-      PaymentMethodStrategyFactory,
-    );
-  });
-
-  it('should be defined', () => {
-    expect(service).toBeDefined();
+        expect(result).toMatchObject(scalapayStrategy);
+      });
+    });
   });
 });
