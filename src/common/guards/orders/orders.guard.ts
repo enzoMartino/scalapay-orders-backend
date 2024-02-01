@@ -1,5 +1,4 @@
 import { CanActivate, ExecutionContext, Injectable } from '@nestjs/common';
-import { Observable } from 'rxjs';
 import { Request } from 'express';
 import { RedisService } from '../../../common/redis/services/redis.service';
 
@@ -7,9 +6,7 @@ import { RedisService } from '../../../common/redis/services/redis.service';
 export class OrdersGuard implements CanActivate {
   constructor(private readonly redisService: RedisService) {}
 
-  canActivate(
-    context: ExecutionContext,
-  ): boolean | Promise<boolean> | Observable<boolean> {
+  async canActivate(context: ExecutionContext): Promise<boolean> {
     const request = context.switchToHttp().getRequest<Request>();
     const cookies = request.cookies;
 
@@ -22,10 +19,8 @@ export class OrdersGuard implements CanActivate {
       return false;
     }
 
-    if (this.redisService.hasCart(clientId)) {
-      return true;
-    }
+    const hasCart = await this.redisService.hasCart(clientId);
 
-    return false;
+    return hasCart;
   }
 }
