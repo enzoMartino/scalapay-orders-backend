@@ -4,7 +4,7 @@ import { mock } from 'jest-mock-extended';
 
 describe('EnvService', () => {
   const configService = mock<ConfigService>();
-  const service: EnvService = new EnvService(configService);
+  const service = new EnvService(configService);
 
   describe('getScalapayOrdersUrl', () => {
     const scalapayApisHostname = 'scalapayApisHostname';
