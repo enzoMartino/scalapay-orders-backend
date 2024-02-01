@@ -1,11 +1,9 @@
-import { Injectable, Logger } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { Merchant } from 'src/scalapay/dtos/requests/create-order.request';
 
 @Injectable()
 export class EnvService {
-  private readonly logger = new Logger(EnvService.name);
-
   constructor(private readonly configService: ConfigService) {}
 
   getMerchantUrls(): Merchant {

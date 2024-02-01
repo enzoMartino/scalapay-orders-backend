@@ -1,18 +1,32 @@
-import { Test, TestingModule } from '@nestjs/testing';
 import { EnvService } from './env.service';
+import { ConfigService } from '@nestjs/config';
+import { mock } from 'jest-mock-extended';
 
 describe('EnvService', () => {
-  let service: EnvService;
-
-  beforeEach(async () => {
-    const module: TestingModule = await Test.createTestingModule({
-      providers: [EnvService],
-    }).compile();
-
-    service = module.get<EnvService>(EnvService);
-  });
+  const configService = mock<ConfigService>();
+  const service: EnvService = new EnvService(configService);
 
   it('should be defined', () => {
     expect(service).toBeDefined();
+  });
+
+  describe('getScalapayOrdersUrl', () => {
+    const scalapayApisHostname = 'scalapayApisHostname';
+    const scalapayApisVersion = 'scalapayApisVersion';
+    const scalapayOrdersApisEndpoint = 'scalapayOrdersApisEndpoint';
+
+    beforeEach(() => {
+      configService.get.mockReturnValueOnce(scalapayApisHostname);
+      configService.get.mockReturnValueOnce(scalapayApisVersion);
+      configService.get.mockReturnValueOnce(scalapayOrdersApisEndpoint);
+    });
+
+    it('should return the right url', () => {
+      const expected = `${scalapayApisHostname}/${scalapayApisVersion}/${scalapayOrdersApisEndpoint}`;
+
+      const result = service.getScalapayOrdersUrl();
+
+      expect(result).toStrictEqual(expected);
+    });
   });
 });
