@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
-import { Merchant } from 'src/scalapay/dtos/requests/create-order.request';
+import { Merchant } from '../../../scalapay/dtos/requests/create-order.request';
 
 @Injectable()
 export class EnvService {

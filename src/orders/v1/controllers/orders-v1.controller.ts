@@ -12,7 +12,7 @@ import {
 import { PlaceOrderV1ResponseDto } from '../dtos/responses/place-order-response.dto';
 import { PlaceOrderV1RequestDto } from '../dtos/requests/place-order-request.dto';
 import { OrdersV1Service } from '../services/orders-v1.service';
-import { OrdersGuard } from 'src/common/guards/orders/orders.guard';
+import { OrdersGuard } from '../../../common/guards/orders/orders.guard';
 import { Request } from 'express';
 
 @Controller('/v1/orders')

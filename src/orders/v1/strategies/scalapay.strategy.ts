@@ -2,13 +2,13 @@ import { Injectable } from '@nestjs/common';
 import { PlaceOrderV1Interface } from '../interfaces/place-order.interface';
 import { PlaceOrderV1RequestDto } from '../dtos/requests/place-order-request.dto';
 import { PlaceOrderV1ResponseDto } from '../dtos/responses/place-order-response.dto';
-import { ScalapayService } from 'src/scalapay/services/scalapay.service';
-import { EnvService } from 'src/common/env/services/env.service';
+import { ScalapayService } from '../../../scalapay/services/scalapay.service';
+import { EnvService } from '../../../common/env/services/env.service';
 import {
   CreateOrderRequest,
   Merchant,
-} from 'src/scalapay/dtos/requests/create-order.request';
-import { ClientCartDto } from 'src/common/redis/dtos/client-cart.dto';
+} from '../../../scalapay/dtos/requests/create-order.request';
+import { ClientCartDto } from '../../../common/redis/dtos/client-cart.dto';
 
 @Injectable()
 export class ScalapayStrategy implements PlaceOrderV1Interface {

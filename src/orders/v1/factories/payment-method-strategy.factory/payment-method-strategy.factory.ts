@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
-import { PaymentMethodsEnum } from 'src/common/enums/payment-methods.enum';
 import { PlaceOrderV1Interface } from '../../interfaces/place-order.interface';
 import { ScalapayStrategy } from '../../strategies/scalapay.strategy';
+import { PaymentMethodsEnum } from '../../../../common/enums/payment-methods.enum';
 
 @Injectable()
 export class PaymentMethodStrategyFactory {

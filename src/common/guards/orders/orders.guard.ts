@@ -1,7 +1,7 @@
 import { CanActivate, ExecutionContext, Injectable } from '@nestjs/common';
 import { Observable } from 'rxjs';
 import { Request } from 'express';
-import { RedisService } from 'src/common/redis/services/redis.service';
+import { RedisService } from '../../../common/redis/services/redis.service';
 
 @Injectable()
 export class OrdersGuard implements CanActivate {

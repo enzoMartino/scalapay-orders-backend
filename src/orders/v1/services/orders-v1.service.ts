@@ -5,7 +5,7 @@ import {
 } from '@nestjs/common';
 import { PlaceOrderV1ResponseDto } from '../dtos/responses/place-order-response.dto';
 import { PlaceOrderV1RequestDto } from '../dtos/requests/place-order-request.dto';
-import { RedisService } from 'src/common/redis/services/redis.service';
+import { RedisService } from '../../../common/redis/services/redis.service';
 import { PaymentMethodStrategyFactory } from '../factories/payment-method-strategy.factory/payment-method-strategy.factory';
 
 @Injectable()

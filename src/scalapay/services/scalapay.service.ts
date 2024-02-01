@@ -5,7 +5,7 @@ import { CreateOrderRequest } from '../dtos/requests/create-order.request';
 import { catchError, exhaustMap, firstValueFrom, of } from 'rxjs';
 import { AxiosError } from 'axios';
 import { ScalapayCreateOrderException } from '../exceptions/create-order.exception';
-import { EnvService } from 'src/common/env/services/env.service';
+import { EnvService } from '../../common/env/services/env.service';
 
 @Injectable()
 export class ScalapayService {

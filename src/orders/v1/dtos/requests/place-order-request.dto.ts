@@ -1,6 +1,6 @@
 import { Expose, Type } from 'class-transformer';
 import { IsNotEmpty, ValidateNested } from 'class-validator';
-import { ShippingDetailsDto } from 'src/common/dtos/shipping-details.dto';
+import { ShippingDetailsDto } from '../../../../common/dtos/shipping-details.dto';
 
 export class PlaceOrderV1RequestDto {
   @Expose()
