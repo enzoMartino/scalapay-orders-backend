@@ -6,10 +6,6 @@ describe('EnvService', () => {
   const configService = mock<ConfigService>();
   const service: EnvService = new EnvService(configService);
 
-  it('should be defined', () => {
-    expect(service).toBeDefined();
-  });
-
   describe('getScalapayOrdersUrl', () => {
     const scalapayApisHostname = 'scalapayApisHostname';
     const scalapayApisVersion = 'scalapayApisVersion';
