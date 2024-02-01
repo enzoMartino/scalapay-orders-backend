@@ -14,6 +14,7 @@ import { PlaceOrderV1RequestDto } from '../dtos/requests/place-order-request.dto
 import { OrdersV1Service } from '../services/orders-v1.service';
 import { OrdersGuard } from '../../../common/guards/orders/orders.guard';
 import { Request } from 'express';
+import { Throttle } from '@nestjs/throttler';
 
 @Controller('/v1/orders')
 export class OrdersV1Controller {
@@ -22,6 +23,7 @@ export class OrdersV1Controller {
   constructor(private readonly ordersService: OrdersV1Service) {}
 
   @Post()
+  @Throttle({})
   @UseGuards(OrdersGuard)
   @HttpCode(HttpStatus.OK)
   async placeOrder(
