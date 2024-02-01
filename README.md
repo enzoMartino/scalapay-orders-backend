@@ -27,6 +27,7 @@
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
 ## Installation
+Check the node version in the .nvmrc file
 
 ```bash
 $ npm install
