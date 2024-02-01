@@ -14,7 +14,7 @@ export class OrdersV1Service {
 
   constructor(
     private readonly redisService: RedisService,
-    private readonly paymentMethodStrategyFactoryService: PaymentMethodStrategyFactory,
+    private readonly paymentMethodStrategyFactory: PaymentMethodStrategyFactory,
   ) {}
 
   async placeOrder(
@@ -24,7 +24,7 @@ export class OrdersV1Service {
     try {
       const clientCart = await this.redisService.getClientCart(clientId);
 
-      return this.paymentMethodStrategyFactoryService
+      return this.paymentMethodStrategyFactory
         .create(clientCart.paymentMethod)
         .placeOrder(payload, clientCart);
     } catch (error) {
