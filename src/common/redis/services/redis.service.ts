@@ -1,5 +1,6 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { ClientCartDto } from '../dtos/client-cart.dto';
+import { PaymentMethodsEnum } from 'src/common/enums/payment-methods.enum';
 
 @Injectable()
 export class RedisService {
@@ -29,6 +30,7 @@ export class RedisService {
         amount: '10.00',
         currency: 'EUR',
       },
+      paymentMethod: PaymentMethodsEnum.scalapay,
     };
   }
 

@@ -1,3 +1,4 @@
+import { PaymentMethodsEnum } from 'src/common/enums/payment-methods.enum';
 import {
   Item,
   TotalAmount,
@@ -6,4 +7,5 @@ import {
 export interface ClientCartDto {
   items: Item[];
   totalAmount: TotalAmount;
+  paymentMethod: PaymentMethodsEnum;
 }
